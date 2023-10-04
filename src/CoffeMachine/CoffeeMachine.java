@@ -15,7 +15,7 @@ public class CoffeeMachine {
     public String getName()  {
         return name;
     }
-    public Cup serve(String name, String size){
+    public Cup serve(CoffeeMachine coffeeMachine){
         Cup cup = new Cup(name, size);
         System.out.println(cup.getName() + cup.getSize());
         return cup;
