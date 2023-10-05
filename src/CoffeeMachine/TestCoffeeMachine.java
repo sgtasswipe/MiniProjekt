@@ -4,17 +4,25 @@ package CoffeeMachine;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class TestCoffeeMachine {
+class TestCoffeeMachine2 {
     ArrayList<CoffeeMachine> coffeeMachines = new ArrayList<>();
     Scanner in = new Scanner(System.in);
     private cupSize cupSize = new cupSize();
     Cup Cup = new Cup("Cup", cupSize.getSize());
 
     public static void main(String[] args) {
-        new TestCoffeeMachine().run();
+        System.out.println("Virk dog!");
+        System.out.println("Virk 2");
+        new TestCoffeeMachine2().run();
+        System.out.println("2");
+    }
+
+    TestCoffeeMachine2() {
+        System.out.println("Constr");
     }
 
     private void run() {
+        System.out.println("Run");
         //chooseCoffee();
         serveCoffee();
     }
