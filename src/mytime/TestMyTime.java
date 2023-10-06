@@ -8,8 +8,9 @@ public class TestMyTime {
     }
 
     private void run() {
-        MyTime myTime = new MyTime(9, 25, 2023, "October", 4);
+        MyTime myTime = new MyTime(24, 65, 2023, "October", 4);
         System.out.println(myTime.getDayOfWeek());
+        myTime.isWorkingDay();
         System.out.println(myTime.getYear());
         System.out.println(myTime.timeAsString());
         myTime.isLeapYear();

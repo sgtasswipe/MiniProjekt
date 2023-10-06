@@ -91,10 +91,10 @@ public class Publishing {
             System.out.printf("Email: %s%n%n", listOfAuthor.getEmail());
         }
 
-        // Efter at have vist alle forfattere, gå tilbage til hovedmenuen eller tilføj en ny bog
+
         System.out.println("\nBack To Main Menu. TYPE '1'\nAdd a book. TYPE '2'");
         int choice = scanner.nextInt();
-        scanner.nextLine(); // Læs newline karakteren efter næste int
+        scanner.nextLine();
 
         if (choice == 1) {
             mainMenu();

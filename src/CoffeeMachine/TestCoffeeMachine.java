@@ -1,28 +1,30 @@
 package CoffeeMachine;
 
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 class TestCoffeeMachine2 {
-    ArrayList<CoffeeMachine> coffeeMachines = new ArrayList<>();
+    ArrayList<String> coffeeMachines = new ArrayList<String>();
     Scanner in = new Scanner(System.in);
-    private cupSize cupSize = new cupSize();
-    Cup Cup = new Cup("Cup", cupSize.getSize());
+    Cup cupS = new Cup("Small");
+    Cup cupM = new Cup("Medium");
+    Cup cupL = new Cup("Large");
+    Cup cup = new Cup("Not set");
+    Cup espressoS = new Cup("Single");
+    Cup espressoD = new Cup("Double");
+    Cup espressoT = new Cup("Triple");
+
 
     public static void main(String[] args) {
-        System.out.println("Virk dog!");
-        System.out.println("Virk 2");
         new TestCoffeeMachine2().run();
-        System.out.println("2");
     }
 
-    TestCoffeeMachine2() {
-        System.out.println("Constr");
-    }
 
     private void run() {
-        System.out.println("Run");
+        System.out.println("Welcome to COFFEE MOCCA MASTER HOUSE");
         //chooseCoffee();
         serveCoffee();
     }
@@ -38,46 +40,102 @@ class TestCoffeeMachine2 {
         int choice = in.nextInt();        // Indlæs brugerens valg
 
         switch (choice) {
-            case 1:
-                System.out.println("You have chosen Latte " + cupSize.getSize());
-                break;
-            case 2:
+            case 1 -> {
+                System.out.println("You have chosen Latte ");
+                coffeeMachines.add("Latte");
+                serveCoffeSize();
+            }
+
+            case 2 -> {
                 System.out.println("You have chosen Black Coffee");
-                break;
-            case 3:
+                coffeeMachines.add("Black Coffee");
+                serveCoffeSize();
+            }
+
+            case 3 -> {
                 System.out.println("You have chosen Espresso");
-                break;
-            case 4:
+                coffeeMachines.add("Espresso");
+                serveCoffeeSTR();
+            }
+            case 4 -> {
                 System.out.println("You have chosen Chocolate Drink");
-                break;
-            case 5:
+                coffeeMachines.add("Chocolate Drink");
+                serveCoffeSize();
+                askForCream();
+            }
+            case 5 -> {
                 System.out.println("You have chosen Cocoa");
-                break;
-            default:
-                System.out.println("Invalid choice");
+                coffeeMachines.add("Cocoa");
+                serveCoffeSize();
+                askForCream();
+            }
+            default -> System.out.println("Invalid choice");
+
         }
     }
 
-   /* public void chooseCoffee() {
-        coffeeMachines.add(new CoffeeMachine("Latte", "Small"));
-        coffeeMachines.add(new CoffeeMachine("Latte", "Medium"));
-        coffeeMachines.add(new CoffeeMachine("Latte", "Large"));
-        coffeeMachines.add(new CoffeeMachine("Espresso", "Single"));
-        coffeeMachines.add(new CoffeeMachine("Espresso", "Double"));
-        coffeeMachines.add(new CoffeeMachine("Espresso", "Triple"));
-        coffeeMachines.add(new CoffeeMachine("Sort Kaffe", "Small"));
-        coffeeMachines.add(new CoffeeMachine("Sort Kaffe", "Medium"));
-        coffeeMachines.add(new CoffeeMachine("Sort Kaffe", "Large"));
-        coffeeMachines.add(new CoffeeMachine("Kakao", "Small"));
-        coffeeMachines.add(new CoffeeMachine("Kakao", "Medium"));
-        coffeeMachines.add(new CoffeeMachine("Kakao", "Large"));
-        coffeeMachines.add(new CoffeeMachine("Chokolade Drik", "Small"));
-        coffeeMachines.add(new CoffeeMachine("Chokolade Drik", "Medium"));
-        coffeeMachines.add(new CoffeeMachine("Chokolade Drik", "Large"));
+    private void askForCream() {
+        System.out.println("Do you want cream?");
+        System.out.println("(1) Yes");
+        System.out.println("(2) No");
+        int choice = in.nextInt();
+        switch (choice) {
+            case 1 -> {
+                System.out.println("You have chosen Yes");
+                coffeeMachines.add("Cream");
+            }
+            case 2 -> {
+                System.out.println("You have chosen No");
+            }
+        }System.out.println(coffeeMachines);
+    }
 
-        for (CoffeeMachine coffeeMachine : coffeeMachines) {
-            coffeeMachine.serve(Cup.getName(), cupSize.getSize());
+    public void serveCoffeSize() {
+
+        System.out.println("Chose your cup size:");
+        System.out.println("(1) Small ");
+        System.out.println("(2) Medium");
+        System.out.println("(3) Large");
+        int choice = in.nextInt();
+        switch (choice) {
+            case 1 -> {
+                cupS.setSize("Small");
+                coffeeMachines.add("Small");
+            }
+            case 2 -> {
+                cupM.setSize("Medium");
+                coffeeMachines.add("Medium");
+            }
+            case 3 -> {
+                cupL.setSize("Large");
+                coffeeMachines.add("Large");
+            }
+        } System.out.println(coffeeMachines);
+
+
+    }
+
+    public void serveCoffeeSTR() {
+
+        System.out.println("How many Espresso shots: ");
+        System.out.println("(1) Single");
+        System.out.println("(2) Double");
+        System.out.println("(3) Triple");
+        int choice = in.nextInt();
+        switch (choice) {
+            case 1 -> {
+                espressoS.setSize("Single");
+                coffeeMachines.add("Single");
+            }
+            case 2 -> {
+                espressoD.setSize("Double");
+                coffeeMachines.add("Double");
+            }
+            case 3 -> {
+                espressoT.setSize("Triple");
+                coffeeMachines.add("Triple");
+            }
         }
-    }*/
-
-}
+        System.out.println(coffeeMachines);
+    }
+} // class TestCoffeeMachine

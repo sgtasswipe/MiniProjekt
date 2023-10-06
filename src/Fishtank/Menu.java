@@ -65,7 +65,7 @@ public class Menu {
         FishTank fishTank = new FishTank("Wogglie", "Swimmie");
         System.out.println("Enter time since last fasting (in days):");
         long daysSinceFast = in.nextLong();
-        in.nextLine(); // Consume newline character
+        in.nextLine(); // Scanner bug
         LocalDateTime lastFeedingDate = LocalDateTime.now().minus(Duration.ofDays(daysSinceFast));
         System.out.println("Date of last fasting: " + lastFeedingDate);
 
@@ -87,15 +87,15 @@ public class Menu {
 
         System.out.println("Please select water state from the list:");
 
-        // Loop through all values of the WaterCondition enum and display them
+
         WaterCondition[] conditionOptions = WaterCondition.values();
         for (int i = 0; i < conditionOptions.length; i++) {
             System.out.println("(" + (i + 1) + ") " + conditionOptions[i]);
         }
 
-        // Read the user's choice
+
         int choice = in.nextInt();
-        in.nextLine(); // Consume newline character
+        in.nextLine(); // scanner bug
 
         if (choice >= 1 && choice <= conditionOptions.length) {
             waterCondition = conditionOptions[choice - 1]; // Set the selected water condition

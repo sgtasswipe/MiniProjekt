@@ -1,14 +1,23 @@
 package CoffeeMachine;
 
-public class Cup extends CoffeeMachine {
-    public Cup(String name, String size) {
-        super(name, size);
+public class Cup {
+    private String size;
 
+
+    public Cup(String size) {
+    setSize(size);
+    }
+
+    public  void setSize (String size) {
+        this.size=size;
 
     }
 
-    public String getName() {
-        return super.getName();
-
+    public String getSize() {
+        return size;
     }
 }
+
+
+
+

@@ -1,5 +1,7 @@
 package mytime;
 
+import java.util.Objects;
+
 public class MyTime {
     private int hours;
     private int minutes;
@@ -19,6 +21,14 @@ public class MyTime {
 
     }
 
+    public void isWorkingDay() {
+        String dayOfWeek = getDayOfWeek();
+        if (Objects.equals(dayOfWeek, "Saturday") || Objects.equals(dayOfWeek, "Sunday"))
+            System.out.println("It is not a work day");
+        else
+            System.out.println("It is a work day");
+    }
+
     public int getYear() {
         return year;
     }
@@ -26,12 +36,30 @@ public class MyTime {
     public String timeAsString() {
         str_hours = String.valueOf(hours);
         str_minutes = String.valueOf(minutes);
-        if (str_hours.length() < 2)
-            str_hours = '0' + str_hours;
+        if (str_hours.length() <2)
+            str_hours = "0" + str_hours;
         if (str_minutes.length() < 2)
-            str_minutes = '0' + str_minutes;
+            str_minutes = "0" + str_minutes;
+        if (hours == 24) {
+            hours = 0;
+            str_hours = "0";
+        }
 
-        return (hours + ":" + minutes);
+        if (hours == 25)
+            System.out.println("error: invalid number");
+        if (minutes == 60) {
+            str_hours = str_hours + (hours + 1);
+
+        minutes -= 60;}
+        if (minutes > 60){
+            str_hours = str_hours + (hours + 1);
+         str_minutes =String.valueOf (minutes -= 60);
+        }
+        if (str_minutes.length() < 2)
+            str_minutes = "0" + str_minutes;
+
+
+        return (str_hours + ":" + str_minutes);
     }
 
     public void isLeapYear() {
@@ -57,7 +85,7 @@ public class MyTime {
 
         String[] daysOfWeek = {"Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
         String dayOfWeek = daysOfWeek[h];
-         return  dayOfWeek;
+        return dayOfWeek;
 
     }
 
@@ -71,4 +99,5 @@ public class MyTime {
         }
         return -1; // Invalid month
     }
+
 }
